@@ -29,7 +29,7 @@
         }
         input[type="text"] {
             width: 100%;
-            padding: 10px;
+            padding: 10px 5px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -58,6 +58,21 @@
         }
         .dish a:hover {
             text-decoration: underline;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
@@ -88,7 +103,7 @@
                             int monAnId = monAn.getId(); // Giả sử MonAn có phương thức getId() để lấy ID
             %>
                             <div class="dish">
-                                <a href="${pageContext.request.contextPath}/view/chiTietMonAn634.jsp?id=<%= monAnId %>">
+                                <a href="${pageContext.request.contextPath}/view/GDchiTietMonAn634.jsp?id=<%= monAnId %>">
                                     <%= monAn.getTenMon() %>
                                 </a>
                             </div>
@@ -98,6 +113,9 @@
                 }
             %>
         </div>
+        <button class="back-button" onclick="window.location.href='${pageContext.request.contextPath}/view/GDKhachHang634.jsp'">
+        Quay lại
+        </button>
     </div>
 </body>
 </html>

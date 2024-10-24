@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PTTKHT/web/view/GDQuanLy634.jsp</file>
-            <file>file:/D:/PTTKHT/web/view/login.jsp</file>
-            <file>file:/D:/PTTKHT/src/java/controller/LoginController.java</file>
-            <file>file:/D:/PTTKHT/web/WEB-INF/web.xml</file>
-            <file>file:/D:/PTTKHT/src/java/controller/LoginServlet.java</file>
+            <file>file:/D:/PTTKHT/src/java/DAO/TimKiemDAO634.java</file>
+            <file>file:/D:/PTTKHT/src/java/DAO/ComBoDAO634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/MonAn634.java</file>
+            <file>file:/D:/PTTKHT/web/view/GDTimKiemMonAn634.jsp</file>
+            <file>file:/D:/PTTKHT/web/view/GDTaoCombo634.jsp</file>
+            <file>file:/D:/PTTKHT/src/java/DAO/MonAnDAO634.java</file>
             <file>file:/D:/PTTKHT/web/view/GDKhachHang634.jsp</file>
+            <file>file:/D:/PTTKHT/web/view/GDdoluu634.jsp</file>
         </group>
     </open-files>
 </project-private>

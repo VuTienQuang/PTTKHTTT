@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đặt Bàn và Đặt Món</title>
+    <title>Giao diện khách hàng</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -68,7 +68,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Đặt Bàn và Đặt Món Trực Tuyến</h2>
+        <h2>Giao diện khách hàng</h2>
         
         <!-- Tìm kiếm món ăn -->
         <div class="section">

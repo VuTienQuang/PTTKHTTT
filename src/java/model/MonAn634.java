@@ -10,6 +10,15 @@ public class MonAn634 {
     public MonAn634() {
     }
 
+    public MonAn634(int id, String tenMon, double gia, String theLoai, String mota) {
+        this.id = id;
+        this.tenMon = tenMon;
+        this.gia = gia;
+        this.theLoai = theLoai;
+        this.mota = mota;
+    }
+    
+
     public String getMota() {
         return mota;
     }
@@ -51,4 +60,3 @@ public class MonAn634 {
         this.theLoai = theLoai;
     }
 }
-

@@ -13,7 +13,7 @@ public class TimKiemDAO634 extends DAO {
     // Phương thức tìm kiếm món ăn theo tên hoặc thể loại
     public List<MonAn634> timKiemMonAn(String keyword) {
         List<MonAn634> dsMonAn = new ArrayList<>();
-        String sql = "SELECT * FROM monan634 WHERE tenMon LIKE ? OR theLoai LIKE ?";
+        String sql = "SELECT * FROM tblmonan634 WHERE tenMon LIKE ? OR theLoai LIKE ?";
 
         try (Connection connection = getConnection(); // Sử dụng phương thức từ lớp DAO
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

@@ -47,6 +47,21 @@
         .btn:hover {
             background-color: #45a049;
         }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -82,6 +97,9 @@
             <h3>Thêm Combo Mới</h3>
             <a href="${pageContext.request.contextPath}/view/GDTaoCombo634.jsp" class="btn">Tạo Combo Mới</a>
         </div>
+        <button class="back-button" onclick="window.location.href='${pageContext.request.contextPath}/view/GDQuanLy634.jsp'">
+        Quay lại trang chính
+        </button>
     </div>
 </body>
 </html>

@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class LoginDAO extends DAO{
      public String login(String username, String password) {
         String vitri = null; // Biến lưu trữ vị trí nếu đăng nhập thành công
-        String sql = "SELECT vitri FROM TaiKhoan634 WHERE username = ? AND password = ?";
+        String sql = "SELECT vitri FROM tblTaiKhoan634 WHERE username = ? AND password = ?";
 
         try (Connection connection = DAO.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
