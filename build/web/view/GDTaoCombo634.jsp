@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%@ page import="DAO.MonAnDAO634" %>
+<%@ page import="DAO.ComBoDAO634" %>
 <%@ page import="model.MonAn634" %>
 <%@ page import="java.util.ArrayList" %>
 
 <%
-    MonAnDAO634 monAnDAO = new MonAnDAO634();
-    List<MonAn634> danhSachMonAn = monAnDAO.layTatCaMonAn(); // Lấy danh sách món ăn
+    ComBoDAO634 comboDAO = new ComBoDAO634();
+    List<MonAn634> danhSachMonAn = comboDAO.layTatCaMonAn(); // Lấy danh sách món ăn
 %>
 
 <!DOCTYPE html>

@@ -78,7 +78,7 @@
 
                 LoginDAO loginDAO = new LoginDAO();
                 String vitri = loginDAO.login(username, password);
-       
+      
             if (vitri.compareTo("KH") == 0 ) {
                 // Nếu xác thực thành công, chuyển hướng đến trang khách hàng
                 response.sendRedirect("view/GDKhachHang634.jsp");

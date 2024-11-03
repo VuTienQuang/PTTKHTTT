@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="DAO.MonAnDAO634" %>
+<%@ page import="DAO.TimKiemDAO634" %>
 <%@ page import="model.MonAn634" %>
 <%@ page import="java.io.IOException" %>
 <%@ page import="jakarta.servlet.ServletException" %>
@@ -51,8 +51,8 @@
         <%
             String t = request.getParameter("id");
             int id = Integer.parseInt(t);
-            MonAnDAO634 monAnDAO = new MonAnDAO634();
-            MonAn634 monAn = monAnDAO.getMonAnById(id); // Phương thức để lấy chi tiết món ăn theo ID
+            TimKiemDAO634 timkiemDAO = new TimKiemDAO634();
+            MonAn634 monAn = timkiemDAO.getMonAnById(id); // Phương thức để lấy chi tiết món ăn theo ID
 
             if (monAn != null) {
         %>

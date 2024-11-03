@@ -1,10 +1,12 @@
 package DAO;
 
+import static DAO.DAO.getConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import model.MonAn634;
 
 public class ComBoDAO634 extends DAO {
     
@@ -46,7 +48,33 @@ public class ComBoDAO634 extends DAO {
         return comboMap;
     }
     
-    
+    public List<MonAn634> layTatCaMonAn() {
+        List<MonAn634> danhSachMonAn = new ArrayList<>();
+        String sql = "SELECT * FROM tblmonan634"; // Giả sử bảng là MonAn634
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet resultSet = ps.executeQuery()) {
+
+            while (resultSet.next()) {
+                // Giả sử các cột trong bảng là monan_id, tenMon, gia, moTa
+                int id = resultSet.getInt("monan_id");
+                String tenMon = resultSet.getString("tenMon");
+                double gia = resultSet.getDouble("gia");
+                String theLoai = resultSet.getString("theLoai");
+                String moTa = resultSet.getString("moTa");
+
+                // Tạo đối tượng MonAn634 và thêm vào danh sách
+                MonAn634 monAn = new MonAn634(id, tenMon, gia, theLoai, moTa);
+                danhSachMonAn.add(monAn);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return danhSachMonAn;
+    }
     public boolean luuCombo(String tenCombo, double giaCombo, String moTa, List<Integer> monAnIds) {
         String sqlCombo = "INSERT INTO tblCombo634 (tenCombo, giaCombo, moTa) VALUES (?, ?, ?)";
         String sqlComboMonAn = "INSERT INTO tblCombo_MonAn634 (combo_id, monan_id) VALUES (?, ?)";
