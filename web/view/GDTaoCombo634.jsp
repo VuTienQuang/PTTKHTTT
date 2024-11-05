@@ -15,6 +15,7 @@
     <meta charset="UTF-8">
     <title>Tạo Combo Món Ăn</title>
     <style>
+        /* CSS cho giao diện */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -73,15 +74,6 @@
             background-color: #218838;
         }
 
-        #tuKhoa {
-            width: calc(100% - 26px);
-        }
-
-        #danhSachKetQua {
-            list-style-type: none;
-            padding: 0;
-        }
-
         #danhSachKetQua li {
             background-color: #f8f9fa;
             margin: 5px 0;
@@ -90,11 +82,7 @@
             cursor: pointer;
             border-radius: 4px;
             transition: background-color 0.2s ease;
-            position: relative; /* Để định vị dấu tích */
-        }
-
-        #danhSachKetQua li:hover {
-            background-color: #e9ecef;
+            position: relative;
         }
 
         #danhSachKetQua li.selected {
@@ -102,8 +90,7 @@
             border-color: #28a745;
         }
 
-        /* Định dạng dấu tích */
-        #danhSachKetQua li .checkmark {
+        .checkmark {
             position: absolute;
             right: 10px;
             top: 50%;
@@ -116,12 +103,14 @@
         #danhSachKetQua li.selected .checkmark {
             display: inline;
         }
+        
         #thongBao {
             color: red;
             font-size: 14px;
             margin-top: 10px;
             display: none;
         }
+        
         #danhSachMonDaChon {
             margin-top: 20px;
         }
@@ -129,83 +118,73 @@
     <script>
         let comboMonAn = []; // Lưu danh sách món ăn đã chọn
         let tenMonDaChon = []; // Lưu tên món ăn đã chọn
+        let tongGiaCombo = 0; // Tổng giá combo
 
         // Hàm tìm món ăn với việc bảo toàn các món ăn đã chọn
         function timMonAn() {
-    const tuKhoa = document.getElementById('tuKhoa').value.toLowerCase();
-    const danhSachMonAn = document.querySelectorAll('.monAnItem'); // Lấy danh sách từ HTML
+            const tuKhoa = document.getElementById('tuKhoa').value.toLowerCase();
+            const danhSachMonAn = document.querySelectorAll('.monAnItem');
 
-    const danhSachKetQua = document.getElementById('danhSachKetQua');
-    danhSachKetQua.innerHTML = ''; // Xóa danh sách trước khi tìm kiếm mới
+            const danhSachKetQua = document.getElementById('danhSachKetQua');
+            danhSachKetQua.innerHTML = '';
 
-    danhSachMonAn.forEach(monAn => {
-        const tenMon = monAn.textContent.toLowerCase();
-        const theLoai = monAn.dataset.theloai.toLowerCase();
+            danhSachMonAn.forEach(monAn => {
+                const tenMon = monAn.textContent.toLowerCase();
+                const theLoai = monAn.dataset.theloai.toLowerCase();
 
-        // Kiểm tra nếu từ khóa nằm trong tên hoặc thể loại của món ăn
-        if (tenMon.includes(tuKhoa) || theLoai.includes(tuKhoa)) {
-            const li = document.createElement('li');
-            li.textContent = monAn.textContent; // Hiển thị tên món ăn và thể loại
-            li.dataset.id = monAn.dataset.id;
+                if (tenMon.includes(tuKhoa) || theLoai.includes(tuKhoa)) {
+                    const li = document.createElement('li');
+                    li.textContent = monAn.textContent;
+                    li.dataset.id = monAn.dataset.id;
+                    li.dataset.gia = monAn.dataset.gia;
 
-            // Kiểm tra nếu món ăn đã được chọn trước đó
-            if (comboMonAn.includes(monAn.dataset.id)) {
-                li.classList.add('selected'); // Đánh dấu món ăn đã được chọn
-            }
+                    if (comboMonAn.includes(monAn.dataset.id)) {
+                        li.classList.add('selected');
+                    }
 
-            li.onclick = () => themMonAn(li); // Thêm sự kiện chọn món
-            const checkmark = document.createElement('span');
-            checkmark.classList.add('checkmark');
-            checkmark.innerHTML = '✔'; // Dấu tích
-            li.appendChild(checkmark);
-            danhSachKetQua.appendChild(li);
+                    li.onclick = () => themMonAn(li);
+                    const checkmark = document.createElement('span');
+                    checkmark.classList.add('checkmark');
+                    checkmark.innerHTML = '✔';
+                    li.appendChild(checkmark);
+                    danhSachKetQua.appendChild(li);
+                }
+            });
         }
-    });
-     const thongBao = document.getElementById('thongBao');
-            if (!timThayMonAn) {
-                thongBao.style.display = 'block';
-                thongBao.innerText = 'Không tìm thấy món ăn phù hợp';
-            } else {
-                thongBao.style.display = 'none';
-            }
-    
-}
-
 
         // Hàm xử lý khi thêm hoặc bỏ chọn món ăn
         function themMonAn(monAnElement) {
             const id = monAnElement.dataset.id;
             const tenMon = monAnElement.textContent.trim();
+            const giaMon = parseInt(monAnElement.dataset.gia);
 
-            // Kiểm tra xem món ăn đã được chọn chưa
             if (!comboMonAn.includes(id)) {
-                comboMonAn.push(id); // Thêm id món ăn vào danh sách combo
-                tenMonDaChon.push(tenMon); // Thêm tên món ăn vào danh sách
-                monAnElement.classList.add('selected'); // Đánh dấu món ăn đã chọn
+                comboMonAn.push(id);
+                tenMonDaChon.push(tenMon);
+                tongGiaCombo += giaMon; // Cộng giá món vào tổng giá combo
+                monAnElement.classList.add('selected');
             } else {
-                // Nếu món ăn đã được chọn thì bỏ chọn
-                comboMonAn = comboMonAn.filter(monAnId => monAnId !== id); // Loại bỏ món ăn khỏi danh sách
-                tenMonDaChon = tenMonDaChon.filter(mon => mon !== tenMon); // Loại bỏ tên món ăn khỏi danh sách
-                monAnElement.classList.remove('selected'); // Bỏ đánh dấu
+                comboMonAn = comboMonAn.filter(monAnId => monAnId !== id);
+                tenMonDaChon = tenMonDaChon.filter(mon => mon !== tenMon);
+                tongGiaCombo -= giaMon; // Trừ giá món khỏi tổng giá combo
+                monAnElement.classList.remove('selected');
             }
 
             capNhatMonDaChon(); // Cập nhật ô văn bản món đã chọn
+            capNhatGiaCombo(); // Cập nhật giá combo
         }
 
         // Hàm cập nhật danh sách món ăn đã chọn vào ô textarea
-            function capNhatMonDaChon() {
+        function capNhatMonDaChon() {
             const danhSachMonDaChonTextarea = document.getElementById('danhSachMonDaChon');
-
-            // Chỉ lấy tên món, không lấy phần thể loại (phần trong dấu ngoặc)
-            const tenMonDaChonChiTen = tenMonDaChon.map(mon => {
-                // Lấy phần trước dấu ngoặc, nếu có
-                return mon.split('(')[0].trim();
-            });
-
-            // Cập nhật lại textarea chỉ với tên món ăn
+            const tenMonDaChonChiTen = tenMonDaChon.map(mon => mon.split('(')[0].trim());
             danhSachMonDaChonTextarea.value = tenMonDaChonChiTen.join(', ');
-    }
+        }
 
+        // Hàm cập nhật giá combo
+        function capNhatGiaCombo() {
+            document.getElementById('giaCombo').value = tongGiaCombo;
+        }
 
         // Lưu combo món ăn
         function luuCombo() {
@@ -213,7 +192,6 @@
             const giaCombo = document.getElementById('giaCombo').value;
             const moTa = document.getElementById('moTa').value;
 
-            // Chuyển hướng đến trang GDdoluu634.jsp để lưu combo
             const form = document.createElement('form');
             form.method = 'POST';
             form.action = 'GDdoluu634.jsp';
@@ -236,7 +214,6 @@
             inputMoTa.value = moTa;
             form.appendChild(inputMoTa);
 
-            // Chuyển đổi comboMonAn thành chuỗi JSON
             const monAnIds = JSON.stringify(comboMonAn);
             const inputMonAnIds = document.createElement('input');
             inputMonAnIds.type = 'hidden';
@@ -244,8 +221,8 @@
             inputMonAnIds.value = monAnIds;
             form.appendChild(inputMonAnIds);
 
-            document.body.appendChild(form); // Thêm form vào body
-            form.submit(); // Gửi form
+            document.body.appendChild(form);
+            form.submit();
         }
     </script>
 </head>
@@ -256,7 +233,7 @@
         <input type="text" id="tenCombo" required><br>
 
         <label for="giaCombo">Giá Combo:</label>
-        <input type="number" id="giaCombo" required><br>
+        <input type="number" id="giaCombo" ><br>
 
         <label for="moTa">Mô Tả:</label>
         <textarea id="moTa" required></textarea><br>
@@ -265,25 +242,22 @@
         <input type="text" id="tuKhoa" onkeyup="timMonAn()">
         <ul id="danhSachKetQua"></ul>
         <p id="thongBao">Không tìm thấy món ăn phù hợp</p>
-        <!-- Ô textarea để hiển thị các món đã chọn -->
+
         <label for="danhSachMonDaChon">Các món đã chọn:</label>
         <textarea id="danhSachMonDaChon" readonly></textarea><br>
 
         <button onclick="luuCombo()">Lưu Combo</button>
 
-        <!-- Danh sách món ăn (ẩn trong HTML) -->
         <ul style="display: none;">
         <% for (MonAn634 monAn : danhSachMonAn) { %>
-            <li class="monAnItem" data-id="<%= monAn.getId() %>" data-theloai="<%= monAn.getTheLoai() %>">
-                <%= monAn.getTenMon() %> (<%= monAn.getTheLoai() %>)
+            <li class="monAnItem" data-id="<%= monAn.getId() %>" data-gia="<%= monAn.getGia() %>" data-theloai="<%= monAn.getTheLoai() %>">
+                <%= monAn.getTenMon() %> (Giá: <%= monAn.getGia() %> VNĐ)
             </li>
         <% } %>
-    </ul>
-
-        <button class="back-button" onclick="window.location.href='${pageContext.request.contextPath}/view/GDQuanLyComBo634.jsp'">
+        </ul>
+       <button class="back-button" onclick="window.location.href='${pageContext.request.contextPath}/view/GDQuanLyComBo634.jsp'">
         Quay lại
         </button>
-
     </div>
 </body>
 </html>

@@ -3,10 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PTTKHT/src/java/DAO/ComBoDAO634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/NhaCungCap634.java</file>
             <file>file:/D:/PTTKHT/src/java/model/ComBo634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/NguyenLieuNhap634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/KhachHang634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/HoaDonNhap634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/DatHang634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/HoaDon634.java</file>
             <file>file:/D:/PTTKHT/web/view/GDTaoCombo634.jsp</file>
+            <file>file:/D:/PTTKHT/src/java/model/NguyenLieu634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/NhanVien634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/MonDuocDat634.java</file>
             <file>file:/D:/PTTKHT/web/view/GDdoluu634.jsp</file>
+            <file>file:/D:/PTTKHT/src/java/DAO/ComBoDAO634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/ComBo_MonAn634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/TheThanhVien634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/Thanhvien634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/TaiKhoan634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/BanAn634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/BanDuocDat634.java</file>
+            <file>file:/D:/PTTKHT/src/java/model/ComboDuocDat634.java</file>
         </group>
     </open-files>
 </project-private>
